@@ -1,0 +1,23 @@
+def is_safe(board, row, col, n_rows, n_cols): 
+for i in range(row): 
+if board[i] == col or abs(board[i] - col) == abs(i - row): 
+return False 
+return True 
+def solve_n_queens(board, row, n_rows, n_cols): 
+if row == n_rows:  # All queens are placed 
+return True 
+for col in range(n_cols): 
+if is_safe(board, row, col, n_rows, n_cols): 
+board[row] = col 
+if solve_n_queens(board, row + 1, n_rows, n_cols): 
+return True 
+board[row] = -1   
+return False 
+def n_queens_rectangular(n_rows, n_cols): 
+board = [-1] * n_rows  # Initialize board 
+if solve_n_queens(board, 0, n_rows, n_cols): 
+return board 
+else: 
+return "No solution" 
+result = n_queens_rectangular(8, 10) 
+print(result)   
