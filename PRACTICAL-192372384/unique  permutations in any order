@@ -1,0 +1,17 @@
+def permuteUnique(nums): 
+def backtrack(start): 
+if start == len(nums) 
+result.append(nums[:])   
+return 
+for i in range(start, len(nums)): 
+if i > start and nums[i] == nums[i - 1]: 
+continue 
+nums[start], nums[i] = nums[i], nums[start]  # Swap 
+backtrack(start + 1)  # Recurse 
+nums[start], nums[i] = nums[i], nums[start]   
+nums.sort()  
+result = [] 
+backtrack(0)   
+return result 
+nums = [1, 1, 2] 
+print(permuteUnique(nums))
